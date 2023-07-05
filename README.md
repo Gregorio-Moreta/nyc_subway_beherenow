@@ -28,17 +28,17 @@ Instagram is the largest Django application out there right now. When it was sol
 
 ## Setting Up a Django Project
 
-We're going to make a Django project called `nyc_subway` that will keep track of subway stations and lines!
-We'll start by creating our project folder: `mkdir nyc_subway`. 
+We're going to make a Django project called `nyc_subway_beherenow` that will keep track of subway stations and lines!
+We'll start by creating our project folder: `mkdir nyc_subway_beherenow`. 
 
 
 ### Set Up & Manage Virtual Environment
 
 We'll be using [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/) to manage our virtual environments. 
 
-Create the virutal environment with `mkvirtualenv nyc_subway`.
+Create the virutal environment with `mkvirtualenv nyc_subway_beherenow`.
 
-We'll automatically enter the virtual envirnoment when we create it. Exit the environemnt with the `deactivate` command and re-enter with `workon nyc_subway`. If we're in the project's root directory and the root directory is `nyc_subway` all we will need to type is `workon .`.Running just the `workon` command will list all of our available environments and `rmvirtualenv environment_name` to delete one.
+We'll automatically enter the virtual envirnoment when we create it. Exit the environemnt with the `deactivate` command and re-enter with `workon nyc_subway_beherenow`. If we're in the project's root directory and the root directory is `nyc_subway_beherenow` all we will need to type is `workon .`.Running just the `workon` command will list all of our available environments and `rmvirtualenv environment_name` to delete one.
 
 
 ### Install Django
@@ -56,7 +56,7 @@ Django includes a `django-admin` command that we can use to quickly start a proj
 Run the command (including the `.` at the end): `django-admin startproject nyc_subway_beherenow . `. Your directory should look like this:
 ```
 .
-├── nyc_subway
+├── _nyc_subway_beherenow
 │   ├── asgi.py
 │   ├── __init__.py
 │   ├── settings.py
@@ -69,8 +69,8 @@ Run the command (including the `.` at the end): `django-admin startproject nyc_s
 It should *not* look like this:
 ```
 .
-├── nyc_subway
-│   ├── nyc_subway
+├── nyc_subway_beherenow
+│   ├── nyc_subway_beherenow
 │   │   ├── asgi.py
 │   │   ├── __init__.py
 │   │   ├── settings.py
@@ -80,7 +80,7 @@ It should *not* look like this:
 └── requirements.txt
 ```
 
-If it looks like the second example, you ran the command wrong. Make sure you ran `django-admin startproject nyc_subway . ` with the `.` at the end. Delete the directory and start over. Also make sure you've run the `pip freeze > requirements.txt` command after!
+If it looks like the second example, you ran the command wrong. Make sure you ran `django-admin startproject nyc_subway_beherenow . ` with the `.` at the end. Delete the directory and start over. Also make sure you've run the `pip freeze > requirements.txt` command after!
 
 
 #### Start the Server
@@ -97,20 +97,20 @@ By default Django uses SQLite. We'll be using Postgresql instead. Make sure that
 
 ```sql
 -- Create the database
-CREATE DATABASE nyc_subway;
+CREATE DATABASE nyc_subway_beherenow;
 
 -- Create an admin user for our app to use
 CREATE USER nyc_subway_admin WITH PASSWORD 'password';
 
 -- Give that user permissins to manage the database:
-GRANT ALL PRIVILEGES ON DATABASE nyc_subway TO nyc_subway_beherenow_admin;
+GRANT ALL PRIVILEGES ON DATABASE nyc_subway_beherenow TO nyc_subway_beherenow_admin;
 ```
 
 Next, install our Postgres adaptor: `pip install psycopg2-binary`.
 
 Update our project requirements with `pip freeze > requirements.txt`.
 
-Edit the `nyc_subway/stettings.py` file to include the database configuration:
+Edit the `nyc_subway_beherenow/settings.py` file to include the database configuration:
 
 ```python
 DATABASES = {
@@ -136,7 +136,7 @@ Per the Django documentation...
 
 Create the app with `django-admin startapp subway`. (Note there's no `.` at the end this time). 
 
-Then, update `nyc_subway/settings.py` to include `'subway'` in the list of `INSTALLED_APPS`:
+Then, update `nyc_subway_beherenow/settings.py` to include `'subway'` in the list of `INSTALLED_APPS`:
 ```python
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -152,7 +152,7 @@ INSTALLED_APPS = [
 Directory:
 ```
 .
-├── nyc_subway
+├── nyc_subway_beherenow
 │   ├── asgi.py
 │   ├── __init__.py
 │   ├── settings.py
@@ -182,7 +182,7 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-Use `psql` to look at your `nyc_subway` database. What tables have been added?
+Use `psql` to look at your `nyc_subway_beherenow` database. What tables have been added?
 
 Whenever we make changes to our Django application that will require changes to the database (such as new tables or column changes) we will need to create and run a migration. 
 
