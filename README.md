@@ -122,14 +122,14 @@ DATABASES = {
         'HOST': 'localhost'
     }
 }
-
+```
 
 Run `python manage.py runserver` to confirm our Django project connects to our database without errors.
 
 
 ### Using `django-admin` to create our Django App
 
-A Django *project* is composed of many *apps*. Our `nyc_subway` project directory is the base of the Django project where we'll handle our base routes, project-level configurations and include our apps. We'll make a `subway` app where we will write our models.
+A Django *project* is composed of many *apps*. Our `nyc_subway_beherenow` project directory is the base of the Django project where we'll handle our base routes, project-level configurations and include our apps. We'll make a `subway` app where we will write our models.
 
 Per the Django documentation...
 > What’s the difference between a project and an app? An app is a web application that does something – e.g., a blog system, a database of public records or a small poll app. A project is a collection of configuration and apps for a particular website. A project can contain multiple apps. An app can be in multiple projects.
@@ -258,7 +258,7 @@ admin.site.register(Train)
 
 Next, go to `http://localhost:8000/admin` and log in. Magic!
 
-## Doanload PSQL
+## Download PSQL
 You should just be able to do it through homebrew on mac, here is the command:
 - https://formulae.brew.sh/formula/postgresql@14
 - https://wiki.postgresql.org/wiki/Homebrew
@@ -415,13 +415,6 @@ If all else fails just drop your error in chatgpt and try those granting permiss
 ProgrammingError: permission denied for table subway_line_stations
 ```
 
-## Summary
-So far we have a functional CRUD app with basic functionality, all of it from django itself.
-There is a more complete way of doing the same except with djangorestframework. It's just a framework build on top of django which gives a lot of useful tools out of the gate.
-
-Checkout the djangorestframework tutorial repo I put together here:
-- https://github.com/Gregorio-Moreta/djangorestframework-tutorial/tree/Part-6/6-viewsets-routers
-
 ## Django's ORM
 
 We'll install `shell_plus` to have a CLI for our Django app with `pip install django-extensions`.
@@ -496,3 +489,9 @@ Train.objects.filter(name__startswith="A")
 Train.objects.exclude(line_id__gte=3)
 ```
 
+## Summary
+So far we have a functional CRUD app with basic functionality, all of it from django itself.
+There is a more complete way of doing the same except with djangorestframework. It's just a framework build on top of django which gives a lot of useful tools out of the gate.
+
+Checkout the djangorestframework tutorial repo I put together here:
+- https://github.com/Gregorio-Moreta/djangorestframework-tutorial/tree/Part-6/6-viewsets-routers
