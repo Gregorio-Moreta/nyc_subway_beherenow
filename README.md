@@ -276,8 +276,17 @@ check user you are signed in with
 ```
 SELECT current_user;
 ```
-
+Find out if you need to change login role with this command it shows columns for each user
+```
+\du
+```
+Command to alter role of log in for a user in psql
+May need in case of error
+```
+ALTER USER nyc_subway_beherenow_admin WITH LOGIN;
+```
 quit psql
+
 ```
 \q
 or
