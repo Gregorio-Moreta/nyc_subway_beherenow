@@ -16,8 +16,8 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Vercel paths
-# STATICFILES_DIRS = [BASE_DIR/'static',]
-# STATIC_ROOT = BASE_DIR/'staticfiles'
+STATICFILES_DIRS = [BASE_DIR/'static',]
+STATIC_ROOT = BASE_DIR/'staticfiles'
 
 # Specify the static directory using Path
 # STATICFILES_DIRS = [BASE_DIR / 'static']
