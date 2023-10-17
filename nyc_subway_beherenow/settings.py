@@ -16,9 +16,14 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Vercel paths
-STATICFILES_DIRS = [BASE_DIR/'static',]
-STATIC_ROOT = BASE_DIR/'staticfiles'
+# STATICFILES_DIRS = [BASE_DIR/'static',]
+# STATIC_ROOT = BASE_DIR/'staticfiles'
 
+# Specify the static directory using Path
+# STATICFILES_DIRS = [BASE_DIR / 'static']
+
+# # Specify the static root directory using Path
+# STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 
 # Quick-start development settings - unsuitable for production
@@ -32,7 +37,7 @@ DEBUG = True
 
 # ALLOWED_HOSTS = []
 # ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
-ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1','.now.sh']
+ALLOWED_HOSTS = ['localhost','.vercel.app', '127.0.0.1','.now.sh', '*']
 
 
 # Application definition
@@ -50,7 +55,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    "whitenoise.middleware.WhiteNoiseMiddleware",
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -93,13 +98,37 @@ WSGI_APPLICATION = 'nyc_subway_beherenow.wsgi.application'
 #     }
 # }
 import dj_database_url
-\
+
 import environ  
 # Initialise environment variables
 env = environ.Env()
 environ.Env.read_env()
  
-DATABASE_URL=env('DATABASE_URL')
+# Define DATABASE_URL and other database settings
+DATABASE_URL = env('DATABASE_URL')
+POSTGRES_DATABASE = env('POSTGRES_DATABASE')
+POSTGRES_USER = env('POSTGRES_USER')
+POSTGRES_PASSWORD = env('POSTGRES_PASSWORD')
+POSTGRES_HOST = env('POSTGRES_HOST')
+PGPORT = env('PGPORT')
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': POSTGRES_DATABASE,
+#         'USER': POSTGRES_USER,
+#         'PASSWORD': POSTGRES_PASSWORD,
+#         'HOST': POSTGRES_HOST,
+#         'PORT': PGPORT,
+#     }
+# }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         **dj_database_url.config(),
+#     }
+# }
 
 DATABASES = {
     'default': 
